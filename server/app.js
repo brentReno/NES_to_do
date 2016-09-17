@@ -15,22 +15,25 @@ app.listen(8080, function(){
 app.get("/", function(req,res){
   console.log("base url hit");
   res.sendFile(path.resolve("public/index.html"));
-});
+});// end base
 
 //post route to create new task
 app.post("/newTask", urlEncodedParser, function(req ,res){
-  console.log("creating a new task");
+  console.log("creating a new task with", req.body);
   res.send("Hello from New Task");
-});
+});// end new task
 
 //post route to change status
 app.post("/changeStatus", urlEncodedParser, function(req, res){
-  console.log("changeing a task");
+  console.log("changeing a task with", req.body);
   res.send("Hello from Change Staus");
-});
+});// end change status
 
 //delete route to remove task
-
+app.delete("/deleteTask", urlEncodedParser, function( req, res){
+  console.log("deleteing task", req.body);
+  res.send("your task has been deleted");
+});//end delete route
 
 //set public folder as static
 app.use(express.static('public'));

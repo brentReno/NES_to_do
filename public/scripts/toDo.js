@@ -40,4 +40,24 @@ $(document).ready(function(){
 
     });//end ajax
   });// end change task on click
+
+  //Delete Task on click
+  $("#deleteTask").on("click",function(){
+    console.log("In Delete Click");
+    //create test objectToSend
+    var objectToSend={
+      id: 1
+    };
+    $.ajax({
+      type:"DELETE",
+      url: "/deleteTask",
+      data:objectToSend,
+      success: function(data){
+        console.log("Deleted task",data);
+
+      }//end success
+    });// end ajax call
+
+  });//end Delete on click
+
 });//end doc ready
