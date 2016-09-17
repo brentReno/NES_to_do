@@ -22,6 +22,7 @@ $(document).ready(function(){
         console.log("back with:", data);
       }//end success
     });//end AJAX call
+      displayTask();
   });//END CREATE TASK CLICK
 
   //update status on CLICK
@@ -70,6 +71,12 @@ var displayTask = function(){
     url:"/getTasks",
     success: function(data){
       console.log(" back with the Tasks:", data);
+
+      var displayString="";
+      for (var i = 0; i < data.length; i++) {
+        displayString +='<li id ="'+data[ i ].id+'"data-value="'+ data[ i ].status+'">'+ data[ i ].task +"</li>";
+      }
+      $('#toDoList').html(displayString);
     }// end success
 
   });//end ajax
