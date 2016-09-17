@@ -8,16 +8,25 @@ $(document).ready(function(){
   //Create Task on Click
   $('#createNewTask').on('click', function(){
     console.log("In createNewTask Click");
-    // CREATE TEST OBJECT
-    var objectToSend ={
-      task:"test task",
-      status: true
+    //create true false values for task
+    var statusIn;
+    if($('#statusIn').val() == "Complete"){
+      statusIn = true;
+    }
+    else if($('#statusIn').val()=="Work In Progress"){
+      statusIn = false;
+    } //end if else
+    // assemble object to send
+    var taskToCreate ={
+      task:$('#taskIn').val(),
+      status: statusIn
     };
+    console.log("task to create:", taskToCreate);
     //AJAX call to server
     $.ajax({
       type:"POST",
       url:"/newTask",
-      data: objectToSend,
+      data: taskToCreate,
       success: function(data){
         console.log("back with:", data);
       }//end success
@@ -71,11 +80,13 @@ var displayTask = function(){
     url:"/getTasks",
     success: function(data){
       console.log(" back with the Tasks:", data);
-
+      //establish display string
       var displayString="";
+      //loop through data array
       for (var i = 0; i < data.length; i++) {
         displayString +='<li id ="'+data[ i ].id+'"data-value="'+ data[ i ].status+'">'+ data[ i ].task +"</li>";
       }
+      //display on DOM
       $('#toDoList').html(displayString);
     }// end success
 

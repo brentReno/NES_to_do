@@ -9,7 +9,7 @@ normal mode
 * v.02- design database and construct table(s) x
 * v.03- build front end with create task--- maybe push to later-- buttons being added for testing routes- add input fields/selects
 * v.04- build server routes( get/ post)x
-* v.05- queries to database for server routes
+* v.05- queries to database for server routesx
 * v.06- post results to DOM with complete or delete
 * v.07- delete route on server x
 * v.08- update route for complete x

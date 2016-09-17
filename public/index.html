@@ -11,9 +11,16 @@
   <body>
     <h1> To Do:</h1>
     <div id="toDoDiv">
-      <ul id="toDoList"></ul>  
+      <ul id="toDoList"></ul>
     </div>
+    <div id ="newTaskIn">
+      <input type="text" id="taskIn" value="" placeholder="Ex: Make an App" maxlength="140">
+      <select  id="statusIn">
+        <option> Complete </option>
+        <option> Work In Progress </option>
+      </select>
     <button id="createNewTask">Create Task</button>
+  </div>
     <button id="changeTaskStaus">Update Status</button>
     <button id="deleteTask">Delete</button>
   </body>

@@ -76,6 +76,7 @@ app.post("/changeStatus", urlEncodedParser, function(req, res){
 //delete route to remove task
 app.delete("/deleteTask", urlEncodedParser, function( req, res){
   console.log("deleteing task", req.body);
+/////////DELETE QUERY GOES HERE\\\\\\\\\\\\\\\\\\\\
   res.send("your task has been deleted");
 });//end delete route
 
