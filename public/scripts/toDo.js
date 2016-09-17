@@ -82,12 +82,15 @@ var displayTask = function(){
       console.log(" back with the Tasks:", data);
       //establish display string
       var displayString="";
+      var selectList="";
       //loop through data array
       for (var i = 0; i < data.length; i++) {
         displayString +='<li id ="'+data[ i ].id+'"data-value="'+ data[ i ].status+'">'+ data[ i ].task +"</li>";
+        selectList+="<option> Item "+ data[ i ].id + "</option>";
       }
       //display on DOM
       $('#toDoList').html(displayString);
+      $('#selectTaskIn').html(selectList);
     }// end success
 
   });//end ajax
