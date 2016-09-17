@@ -17,6 +17,11 @@ app.get("/", function(req,res){
   res.sendFile(path.resolve("public/index.html"));
 });
 
+app.post("/newTask", urlEncodedParser, function(req ,res){
+  console.log("creating a new task");
+  res.send("Hello from New Task");
+});
+
 
 //set public folder as static
 app.use(express.static('public'));
