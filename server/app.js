@@ -47,7 +47,24 @@ app.get("/", function(req,res){
 //post route to create new task
 app.post("/newTask", urlEncodedParser, function(req ,res){
   console.log("creating a new task with", req.body);
-  res.send("Hello from New Task");
+  //create DB data
+  var task = req.body.task;
+  var status= req.body.status;
+  pg.connect(connectionString, function(err, client, done){
+    //error
+    if(err){
+      console.log(err);
+    }
+    //succesful connection
+    else{
+    console.log("connected to the database");
+    //make query var
+    client.query( "INSERT INTO tasks(task, Status) VALUES($1, $2);",[task, status]);
+      console.log("task added to DB");
+      done();
+
+  }//end else
+  });//end PG connect
 });// end new task
 
 //post route to change status

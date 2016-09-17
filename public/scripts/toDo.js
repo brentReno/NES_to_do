@@ -11,7 +11,7 @@ $(document).ready(function(){
     // CREATE TEST OBJECT
     var objectToSend ={
       task:"test task",
-      satus: true
+      status: true
     };
     //AJAX call to server
     $.ajax({
