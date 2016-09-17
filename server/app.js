@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 var urlEncodedParser = bodyParser.urlencoded({extended: false});
 var path = require('path');
 var pg = require('pg');
-// add connection string here
+var connectionString = "postgres://localhost:5432/weekend_to_do";
 
 //spin up server
 app.listen(8080, function(){
@@ -20,7 +20,28 @@ app.get("/", function(req,res){
 //Get tasks
   app.get("/getTasks", function(req, res){
     console.log("Fetching to do");
-    res.send("back with To Do's");
+    pg.connect(connectionString, function(err, client, done){
+      //error
+      if(err){
+        console.log(err);
+      }
+      //succesful connection
+      else{
+      console.log("connected to the database");
+      //array to hold our results
+      var tasksArray=[];
+      //make query var
+      var queryResults = client.query( 'SELECT * FROM tasks' );
+      console.log(queryResults);
+      queryResults.on('row', function( row ){
+        tasksArray.push( row );
+      });//end query results
+      queryResults.on('end', function(){
+        done();
+        return res.json(tasksArray);
+      });//end query results
+    }//end else
+    });//end PG connect
   }); //end get tasks route
 
 //post route to create new task
