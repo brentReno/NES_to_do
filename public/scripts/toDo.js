@@ -2,6 +2,8 @@ console.log("toDo script is sourced");
 
 $(document).ready(function(){
   console.log("JQ is sourced");
+  //call display tasks
+  displayTask();
 
   //Create Task on Click
   $('#createNewTask').on('click', function(){
@@ -61,3 +63,14 @@ $(document).ready(function(){
   });//end Delete on click
 
 });//end doc ready
+
+//Display tasks
+var displayTask = function(){
+  $.ajax({
+    url:"/getTasks",
+    success: function(data){
+      console.log(" back with the Tasks:", data);
+    }// end success
+
+  });//end ajax
+};//end display tasks

@@ -17,6 +17,12 @@ app.get("/", function(req,res){
   res.sendFile(path.resolve("public/index.html"));
 });// end base
 
+//Get tasks
+  app.get("/getTasks", function(req, res){
+    console.log("Fetching to do");
+    res.send("back with To Do's");
+  }); //end get tasks route
+
 //post route to create new task
 app.post("/newTask", urlEncodedParser, function(req ,res){
   console.log("creating a new task with", req.body);
