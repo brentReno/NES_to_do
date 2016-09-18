@@ -1,0 +1,101 @@
+html{
+  font-family: Helvetica;
+}
+h1{
+  text-align: center;
+  color: #010D2A;
+  background-color: #D1D5DE;
+  border-radius:5px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+div{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  text-align: center;
+  width:500px;
+  background-color: #D7DEDC;
+  border-radius: 2px;
+}
+ul{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+li{
+  list-style-type:disc;
+  text-align: left;
+}
+button{
+  color: #D7DEDC;
+  background-color: #394053;
+  border: 0 ;
+  border-radius: 3px;
+  font-size: 12px;
+  margin-top: 15px;
+  box-shadow: 3px 3px 5px #394053;
+  outline: none;
+}
+button:hover{
+  color: #394053;
+  background-color:#D1D5DE;
+  box-shadow: none;
+}
+
+#newTaskIn{
+  padding-bottom: 9px;
+}
+#deleteTaskDiv{
+  padding-bottom: 9px;
+}
+#updateStatus{
+  padding-bottom: 9px;
+}
+select{
+  background:#69747C;
+  color: #D1D5DE;
+   width: 150px;
+   padding: 5px;
+   font-size: 12px;
+   border: 0;
+   border-radius: 0;
+   height: 20px;
+}
+
+input[type="text"] {
+  font-size: 14px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 2px;
+  border:1px solid #010D2A;
+}
+input[type="text"]:focus {
+  outline: none;
+}
+.container{
+  background-color: #394053;
+  width:525px;
+  padding-bottom: 10px;
+  padding-top: 1px;
+  height:auto;
+  border-radius: 5px;
+  border: 2px solid #D1D5DE;
+  box-shadow: 3px 3px 5px #394053;
+}
+
+.complete{
+  text-decoration: line-through;
+}
+p{
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+#safetyCheck button{
+  margin-top:1px;
+  margin-left: 3px;
+}

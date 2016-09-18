@@ -9,29 +9,33 @@
     <link rel="stylesheet" href="/styles/main.css" media="screen" title="no title">
   </head>
   <body>
-    <h1> To Do:</h1>
-    <div id="toDoDiv">
-      <ul id="toDoList"></ul>
+    <div class="container">
+      <h1> To Do List</h1>
+        <div id="toDoDiv">
+          <ul id="toDoList"></ul>
+        </div>
+        <div id ="newTaskIn">
+          <input type="text" id="taskIn" value="" placeholder="Ex: Make an App" maxlength="140">
+          <select  id="statusIn">
+            <option value=''disabled selected>Set Status</option>
+            <option> Complete </option>
+            <option> Work In Progress </option>
+          </select>
+        <button id="createNewTask">Create Task</button>
+      </div>
+        <div id="updateStatus">
+          <select id="selectTaskIn"></select>
+          <select id ="statusChangeIn">
+              <option value=''disabled selected>Set Status</option>
+              <option> Complete </option>
+              <option> Work In Progress </option>
+          </select>
+        <button id="changeTaskStaus">Update Status</button>
+      </div>
+      <div id="deleteTaskDiv">
+        <select id="deleteTaskSel"></select>
+        <button id="deleteTask">Delete</button>
+      </div>
     </div>
-    <div id ="newTaskIn">
-      <input type="text" id="taskIn" value="" placeholder="Ex: Make an App" maxlength="140">
-      <select  id="statusIn">
-        <option> Complete </option>
-        <option> Work In Progress </option>
-      </select>
-    <button id="createNewTask">Create Task</button>
-  </div>
-    <div id="updateStatus">
-      <select id="selectTaskIn" data-value="34"></select>
-      <select id ="statusChangeIn">
-          <option> Complete </option>
-          <option> Work In Progress </option>
-      </select>
-    <button id="changeTaskStaus">Update Status</button>
-  </div>
-  <div id="deleteTaskDiv">
-    <select id="deleteTaskSel"></select>
-    <button id="deleteTask">Delete</button>
-  </div>
   </body>
 </html>

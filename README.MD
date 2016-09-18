@@ -10,16 +10,16 @@ normal mode
 * v.03- build front end with create task--- maybe push to later-- buttons being added for testing routes- add input fields/selectsx
 * v.04- build server routes( get/ post)x
 * v.05- queries to database for server routesx
-* v.06- post results to DOM with completex or delete
+* v.06- post results to DOM with complete x or delete x
 * v.07- delete route on server x
 * v.08- update route for complete x
-* v.09- add styling
+* v.09- add styling-- save until all modes are completed
 * v1.0- functioning project
 
 Hard mode
 ---------
-* v1.1 - safety check delete
+* v1.1 - safety check delete x
 
 Pro
 ---
-* v 1.2- completed tasks brought to the bottom of the lis(Order query results by completed).
+* v 1.2- completed tasks brought to the bottom of the lis(Order query results by completed)x.
