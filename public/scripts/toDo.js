@@ -59,6 +59,7 @@ $(document).ready(function(){
       data: objectToSend,
       success: function(data){
       console.log("back from changeStatus:", data);
+      displayTask();
     }// end success
 
     });//end ajax
@@ -67,20 +68,19 @@ $(document).ready(function(){
   //Delete Task on click
   $("#deleteTask").on("click",function(){
     console.log("In Delete Click");
-    //create test objectToSend
-    var objectToSend={
-      id: 1
+    //create object
+    var taskToDelete={
+      id: $('#deleteTaskSel').find(':selected').data('value'),
     };
     $.ajax({
       type:"DELETE",
       url: "/deleteTask",
-      data:objectToSend,
+      data:taskToDelete,
       success: function(data){
-        console.log("Deleted task",data);
-
+        console.log("Deleted Task: "+ data);
       }//end success
     });// end ajax call
-
+      displayTask();
   });//end Delete on click
 
 });//end doc ready
@@ -94,14 +94,17 @@ var displayTask = function(){
       //establish display string
       var displayString="";
       var selectList="";
+      var deleteList="";
       //loop through data array
       for (var i = 0; i < data.length; i++) {
         displayString +='<li id ="'+data[ i ].id+'"data-value="'+ data[ i ].status+'">'+ data[ i ].task +"</li>";
         selectList+='<option data-value="'+data[ i ].id+'"> Item '+ data[ i ].id + "</option>";
+        deleteList+='<option data-value="'+data[ i ].id+'"> Item '+ data[ i ].id + "</option>";
       }
       //display on DOM
       $('#toDoList').html(displayString);
       $('#selectTaskIn').html(selectList);
+      $('#deleteTaskSel').html(deleteList);
     }// end success
 
   });//end ajax

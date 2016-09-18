@@ -91,8 +91,20 @@ app.post("/changeStatus", urlEncodedParser, function(req, res){
 //delete route to remove task
 app.delete("/deleteTask", urlEncodedParser, function( req, res){
   console.log("deleteing task", req.body);
-/////////DELETE QUERY GOES HERE\\\\\\\\\\\\\\\\\\\\
-  res.send("your task has been deleted");
+  pg.connect(connectionString, function(err, client, done){
+    //error
+    if(err){
+      console.log(err);
+    }
+    //succesful connection
+    else{
+    console.log("connected to the database");
+    //make query var
+    client.query("DELETE FROM tasks WHERE id =($1);", [req.body.id]);
+    console.log("Task "+ req.body.id +" has been deleted.");
+    done();
+    }//end else
+  });//end pg connect
 });//end delete route
 
 //set public folder as static
