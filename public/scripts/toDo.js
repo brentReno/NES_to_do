@@ -37,10 +37,21 @@ $(document).ready(function(){
   //update status on CLICK
   $("#changeTaskStaus").on('click', function(){
     console.log("In chnageTaskStatus on click");
-    //create test object
+    //convert to true false
+    var statusSel;
+    if($('#statusChangeIn').val()== "Complete"){
+      statusSel = true;
+    }
+    else if($('#statusChangeIn').val()=="Work In Progress"){
+      statusSel = false;
+    } //end if else
+
+    //create object
     var objectToSend ={
-      status: true
+      id: $('#selectTaskIn').find(':selected').data('value'),
+      status: statusSel
     };
+    console.log("object to send", objectToSend);
     //AJAX call
     $.ajax({
       type:"POST",
@@ -86,7 +97,7 @@ var displayTask = function(){
       //loop through data array
       for (var i = 0; i < data.length; i++) {
         displayString +='<li id ="'+data[ i ].id+'"data-value="'+ data[ i ].status+'">'+ data[ i ].task +"</li>";
-        selectList+="<option> Item "+ data[ i ].id + "</option>";
+        selectList+='<option data-value="'+data[ i ].id+'"> Item '+ data[ i ].id + "</option>";
       }
       //display on DOM
       $('#toDoList').html(displayString);

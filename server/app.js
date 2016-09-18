@@ -70,7 +70,22 @@ app.post("/newTask", urlEncodedParser, function(req ,res){
 //post route to change status
 app.post("/changeStatus", urlEncodedParser, function(req, res){
   console.log("changeing a task with", req.body);
-  res.send("Hello from Change Staus");
+  var id= req.body.id;
+  var status = req.body.status;
+  pg.connect(connectionString, function(err, client, done){
+    //error
+    if(err){
+      console.log(err);
+    }
+    //succesful connection
+    else{
+    console.log("connected to the database");
+    //make query var
+    client.query( "UPDATE tasks SET status ="+ status +" WHERE id="+ id +";");
+      console.log("Status changed in DB");
+      done();
+    }
+  });// end pg connect
 });// end change status
 
 //delete route to remove task
