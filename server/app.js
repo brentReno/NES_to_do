@@ -31,7 +31,7 @@ app.get("/", function(req,res){
       //array to hold our results
       var tasksArray=[];
       //make query var
-      var queryResults = client.query( 'SELECT * FROM tasks' );
+      var queryResults = client.query( 'SELECT * FROM tasks ORDER BY status' );
       console.log(queryResults);
       queryResults.on('row', function( row ){
         tasksArray.push( row );
