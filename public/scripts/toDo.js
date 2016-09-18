@@ -65,9 +65,15 @@ $(document).ready(function(){
     });//end ajax
   });// end change task on click
 
-  //Delete Task on click
-  $("#deleteTask").on("click",function(){
-    console.log("In Delete Click");
+  //Delete Safety check
+  $("#deleteTask").on("click", function(){
+    $("#deleteTaskDiv").append("<div id='safetyCheck'><p> Are you sure you want to delet this Task?</p><button id='deleteYes'>Delete</button><button id='deleteNo'>Don't Delete</button></div>");
+  });//end delete safety check
+
+  //Delete Yes on click
+  $("body").on("click","#deleteYes",function(){
+    console.log("In Delete Yes Click");
+    $('#safetyCheck').remove();
     //create object
     var taskToDelete={
       id: $('#deleteTaskSel').find(':selected').data('value'),
@@ -81,7 +87,13 @@ $(document).ready(function(){
       }//end success
     });// end ajax call
       displayTask();
-  });//end Delete on click
+    });//end Delete on click
+
+  //Delete No on click
+  $("body").on("click","#deleteNo",function(){
+   console.log("In Delete No Click");
+   $('#safetyCheck').remove();
+  });// end delete No
 
 });//end doc ready
 
