@@ -41,39 +41,50 @@ $(document).ready(function(){
         }//end success
       });//end AJAX call
       displayTask();
+    $("#statusIn").val($("#statusIn option:first").val());
+    $('#taskIn').val('');
     }//end else
   });//END CREATE TASK CLICK
 
   //update status on CLICK
   $("#changeTaskStaus").on('click', function(){
-    console.log("In chnageTaskStatus on click");
-    //convert to true false
-    var statusSel;
-    if($('#statusChangeIn').val()== "Complete"){
-      statusSel = true;
+    console.log("In changeTaskStatus on click");
+    //check empties
+    if($('#selectTaskIn option').val()=== "0"|| $('#statusChangeIn option').val()=== "0"){
+      $('#selectTaskIn').fadeOut('slow').fadeIn('slow');
+      $('#statusChangeIn').fadeOut('slow').fadeIn('slow');
     }
-    else if($('#statusChangeIn').val()=="Work In Progress"){
-      statusSel = false;
-    } //end if else
+    else{
+      //convert to true false
+      var statusSel;
+      if($('#statusChangeIn').val()== "Complete"){
+        statusSel = true;
+      }
+      else if($('#statusChangeIn').val()=="Work In Progress"){
+        statusSel = false;
+      } //end if else
 
-    //create object
-    var objectToSend ={
-      id: $('#selectTaskIn').find(':selected').data('value'),
-      status: statusSel
-    };
-    console.log("object to send", objectToSend);
-    //AJAX call
-    $.ajax({
-      type:"POST",
-      url: "/changeStatus",
-      data: objectToSend,
-      success: function(data){
-      console.log("back from changeStatus:", data);
+      //create object
+      var objectToSend ={
+        id: $('#selectTaskIn').find(':selected').data('value'),
+        status: statusSel
+      };
+      console.log("object to send", objectToSend);
+      //AJAX call
+      $.ajax({
+        type:"POST",
+        url: "/changeStatus",
+        data: objectToSend,
+        success: function(data){
+        console.log("back from changeStatus:", data);
 
-    }// end success
+      }// end success
 
-    });//end ajax
-    displayTask();
+      });//end ajax
+      displayTask();
+      $("#selectTaskIn").val($("#selectTaskIn option:first").val());
+      $("#statusChangeIn").val($("#statusChangeIn option:first").val());
+    }//end else
   });// end change task on click
 
   //Delete Safety check
@@ -85,6 +96,13 @@ $(document).ready(function(){
   $("body").on("click","#deleteYes",function(){
     console.log("In Delete Yes Click");
     $('#safetyCheck').remove();
+    console.log($('#deleteTaskSel option').val());
+    //check for empty fields
+    if($('#deleteTaskSel option').val()=== "0"){
+      $('#deleteTaskSel').fadeOut().fadeIn();
+      return;
+    } else {
+
     //create object
     var taskToDelete={
       id: $('#deleteTaskSel').find(':selected').data('value'),
@@ -98,6 +116,8 @@ $(document).ready(function(){
       }//end success
     });// end ajax call
       displayTask();
+      $("#deleteTaskSel").val($("#deleteTaskSel option:first").val());
+    }//end else
     });//end Delete on click
 
   //Delete No on click
@@ -116,8 +136,8 @@ var displayTask = function(){
       console.log(" back with the Tasks:", data);
       //establish display string
       var displayString="";
-      var selectList="<option value=''disabled selected>Select a Task</option>";
-      var deleteList="<option value=''disabled selected>Select a Task</option>";
+      var selectList="<option value='0'disabled selected>Select a Task</option>";
+      var deleteList="<option value='0'disabled selected>Select a Task</option>";
       //loop through data array
       for (var i = 0; i < data.length; i++) {
         if(data[ i ].status === true){

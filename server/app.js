@@ -7,8 +7,8 @@ var pg = require('pg');
 var connectionString = "postgres://localhost:5432/weekend_to_do";
 
 //spin up server
-app.listen(8080, function(){
-  console.log("The server is listening on 8080");
+app.listen(3001, function(){
+  console.log("The server is listening on 3001");
 });
 
 //establish base url
