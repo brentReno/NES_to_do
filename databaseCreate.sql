@@ -1,3 +1,5 @@
+Database named weekend_to_do
+
 CREATE TABLE tasks(
   id SERIAL PRIMARY KEY,
   task VARCHAR(140),
