@@ -102,6 +102,12 @@ $(document).ready(function(){
     var taskToDelete={
       id: $('#deleteTaskSel').find(':selected').data('value'),
     };
+    if(taskToDelete.id ===undefined){
+      console.log("nothing to delete");
+      $('#deleteTaskSel').fadeOut('slow').fadeIn('slow');
+      return;
+
+    } else {
     $.ajax({
       type:"DELETE",
       url: "/deleteTask",
@@ -112,7 +118,8 @@ $(document).ready(function(){
     });// end ajax call
       displayTask();
       $("#deleteTaskSel").val($("#deleteTaskSel option:first").val());
-    });//end Delete on click
+    }//end else
+  });//end Delete on click
 
   //Delete No on click
   $("body").on("click","#deleteNo",function(){
