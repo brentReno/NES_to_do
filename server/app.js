@@ -68,7 +68,7 @@ app.post("/newTask", urlEncodedParser, function(req ,res){
 });// end new task
 
 //post route to change status
-app.post("/changeStatus", urlEncodedParser, function(req, res){
+app.put("/changeStatus", urlEncodedParser, function(req, res){
   console.log("changeing a task with", req.body);
   var id= req.body.id;
   var status = req.body.status;
