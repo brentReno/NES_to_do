@@ -63,6 +63,13 @@ $(document).ready(function(){
         id: $('#selectTaskIn').find(':selected').data('value'),
         status: statusSel
       };
+      if (objectToSend.id === undefined || objectToSend.status === undefined){
+        console.log("Nothing to send");
+        $('#selectTaskIn').fadeOut('slow').fadeIn('slow');
+        $('#statusChangeIn').fadeOut('slow').fadeIn('slow');
+        return;
+      } else{
+
       console.log("object to send", objectToSend);
       //AJAX call
       $.ajax({
@@ -78,6 +85,7 @@ $(document).ready(function(){
       displayTask();
       $("#selectTaskIn").val($("#selectTaskIn option:first").val());
       $("#statusChangeIn").val($("#statusChangeIn option:first").val());
+    }// end else
   });// end change task on click
 
   //Delete Safety check
