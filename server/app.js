@@ -62,6 +62,7 @@ app.post("/newTask", urlEncodedParser, function(req ,res){
     client.query( "INSERT INTO tasks(task, Status) VALUES($1, $2);",[task, status]);
       console.log("task added to DB");
       done();
+      res.send({success:true});
 
   }//end else
   });//end PG connect
@@ -84,6 +85,7 @@ app.put("/changeStatus", urlEncodedParser, function(req, res){
     client.query( "UPDATE tasks SET status ="+ status +" WHERE id="+ id +";");
       console.log("Status changed in DB");
       done();
+      res.send({success:true});
     }
   });// end pg connect
 });// end change status
@@ -102,6 +104,7 @@ app.delete("/deleteTask", urlEncodedParser, function( req, res){
     //make query var
     client.query("DELETE FROM tasks WHERE id =($1);", [req.body.id]);
     console.log("Task "+ req.body.id +" has been deleted.");
+    res.send({success:true});
     done();
     }//end else
   });//end pg connect
