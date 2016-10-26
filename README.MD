@@ -1,4 +1,4 @@
-Weekend Project 04
+Prime Weekend Project 04- To Do List
 ==================
 The purpose of this project is to use jQuery, node, express and sql to create a basic to do list application.
 
