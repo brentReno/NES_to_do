@@ -1,25 +1,13 @@
 Weekend Project 04
 ==================
-The purpose of this project is to use node express and sql to create a basic to do application.
---------------------------------------------------------------------------------------------
-VERSIONS
+The purpose of this project is to use jQuery, node, express and sql to create a basic to do list application.
+
+Basic Functionality
 ========
-normal mode
-* V.01- create Shell x
-* v.02- design database and construct table(s) x
-* v.03- build front end with create task--- maybe push to later-- buttons being added for testing routes- add input fields/selectsx
-* v.04- build server routes( get/ post)x
-* v.05- queries to database for server routesx
-* v.06- post results to DOM with complete x or delete x
-* v.07- delete route on server x
-* v.08- update route for complete x
-* v.09- add styling-- save until all modes are completed
-* v1.0- functioning project
+Users, can create a task, and set it's status, complete or incomplete.
 
-Hard mode
----------
-* v1.1 - safety check delete x
+Stretch Functionality
+==========
+Delete Tasks, and verify the user wants to delete the task.
 
-Pro
----
-* v 1.2- completed tasks brought to the bottom of the lis(Order query results by completed)x.
+Sort the task display with uncompleted tasks first, and completed tasks second.
